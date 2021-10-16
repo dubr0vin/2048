@@ -4,15 +4,19 @@
 #include <thread>
 
 void TextUI::DrawField(Engine::Field field, Engine::GameStatus status) {
-    clear();
-    for (const auto &x: field) {
-        for (const auto &y: x) {
-            printw("%d ", y);
+    if (status == Engine::GameStatus::Lose) {
+        std::printf("Game over!");
+    } else {
+        clear();
+        for (const auto &x: field) {
+            for (const auto &y: x) {
+                printw("%d ", y);
+            }
+            printw("\n");
         }
-        printw("\n");
+        printw(":");
+        refresh();
     }
-    printw(":");
-    refresh();
 }
 
 
