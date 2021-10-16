@@ -1,9 +1,7 @@
 #include "text_ui.h"
-#include <iostream>
 #include <curses.h>
-#include <stdio.h>
-#include <unistd.h>
-
+#include <chrono>
+#include <thread>
 
 void TextUI::DrawField(Engine::Field field, Engine::GameStatus status) {
     clear();
@@ -22,7 +20,7 @@ Engine::MoveDirection TextUI::ReadCommand() {
     while (true) {
         if (GetChar()) {
             int c = getch();
-            printw("%d",c);
+            printw("%d", c);
             refresh();
             if (c == 0x41) {
                 return Engine::MoveDirection::Up;
@@ -33,6 +31,8 @@ Engine::MoveDirection TextUI::ReadCommand() {
             } else if (c == 0x43) {
                 return Engine::MoveDirection::Right;
             }
+        } else {
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
     }
 }
