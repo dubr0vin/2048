@@ -20,7 +20,6 @@ Engine::MoveDirection TextUI::ReadCommand() {
     while (true) {
         if (GetChar()) {
             int c = getch();
-            printw("%d", c);
             refresh();
             if (c == 0x41) {
                 return Engine::MoveDirection::Up;
