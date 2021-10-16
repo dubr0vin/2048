@@ -15,5 +15,5 @@ make
 
 ```shell
 #in build directory
-./2048
+./2048 [FIELD_SIZE]
 ```
