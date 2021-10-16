@@ -4,7 +4,7 @@
 
 class UI {
 public:
-    virtual void DrawField(Engine::Field field, Engine::GameStatus status) = 0;
+    virtual void DrawField(const Engine::Field& field, Engine::GameStatus status) = 0;
 
     virtual Engine::MoveDirection ReadCommand() = 0;
 };
